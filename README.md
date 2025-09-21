@@ -2,6 +2,13 @@
 ### Ver. 1.0.0
 This is a core shader mod for OpenMW 0.49 that aims to recreate the older water shader used by Morrowind.exe. The original pixel shader was picked apart to reproduce the overall look as accurately as possible, though a 100% perfect recreation wasn't achievable for multiple reasons. That being said, I think this will still satisfy anyone trying to get that classic 2002 look.
 
+<img src="https://i.imgur.com/4z2Gkzg.png" alt="Ebonheart at sunset">
+<details>
+  <summary>Screenshots</summary>
+  <img src="https://i.imgur.com/T07BwhQ.png" alt="Lake Amaya">
+  <img src="https://i.imgur.com/op0rXbm.png" alt="Water under the bridge">
+</details>
+
 ## Installation
 
 1. Find the resources directory inside your OpenMW installation and make a backup of it. Don't put anything in this backup, it's just for uninstalling/reinstalling.
