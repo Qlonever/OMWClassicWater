@@ -18,6 +18,8 @@ This is a core shader mod for OpenMW 0.49 that aims to recreate the older water 
 ### Compatibility
 This mod is made for OpenMW 0.49. As of 9/21/2025, it works with development builds of 0.50, but it might not function with later versions.
 
+This will likely conflict with other core shader mods. Combine them with caution.
+
 I haven't confirmed that this works on Mac. If you use this mod on a Mac, let me know how it works for you.
 
 ## Tweakables
