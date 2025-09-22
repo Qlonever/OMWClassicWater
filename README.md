@@ -1,5 +1,5 @@
 # Classic Water Shader for OpenMW 0.49
-### Ver. 1.0.0
+### Ver. 1.1.0
 This is a core shader mod for OpenMW 0.49 that aims to recreate the older water shader used by Morrowind.exe. The original pixel shader was picked apart to reproduce the overall look as accurately as possible, though a 100% perfect recreation wasn't achievable for multiple reasons. That being said, I think this will still satisfy anyone trying to get that classic 2002 look.
 
 <img src="https://i.imgur.com/4z2Gkzg.png" alt="Ebonheart at sunset">

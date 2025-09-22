@@ -42,6 +42,10 @@ const float LERP_CLOSE_INTENSITY = 1.0;                    // intensity of refle
 const float LERP_CLOSE_AMBIENT = 1.0;                      // influence of ambient light over reflection fade color
 const vec3 BASE_AMBIENT = 255 / vec3(137, 140, 160);       // base ambient value under which fade color won't be influenced
 
+#if @wobblyShores
+const float WOBBLY_SHORE_FADE_DISTANCE = 6200.0;   // fade out wobbly shores to mask precision errors, the effect is almost impossible to see at a distance
+#endif
+
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
 
 vec2 normalCoords(vec2 uv, float scale, float time, vec2 speed, vec2 previousNormal)
@@ -163,11 +167,6 @@ void main(void)
 
     // refraction
     vec3 refraction = sampleRefractionMap(screenCoords - screenCoordsOffset * REFR_BUMP).rgb;
-
-    // brighten up the refraction underwater
-    // this compensates for weirdness when applying fog to refraction
-    if (cameraPos.z < 0.0)
-        refraction = clamp(refraction * 1.5, 0.0, 1.0);
 #endif
 
     // reflection
@@ -179,6 +178,16 @@ void main(void)
     reflection = mix(reflection, waterColor, abs(viewDir.z) * LERP_CLOSE_INTENSITY) + simpleRain;
 
 #if @waterRefraction
+
+#if @wobblyShores
+    // wobbly water: hard-fade into refraction texture at extremely low depth, with a wobble based on normal mapping
+    float viewFactor = mix(abs(viewDir.z), 1.0, 0.2);
+    float verticalWaterDepth = realWaterDepth * viewFactor; // an estimate
+    float shoreOffset = verticalWaterDepth - 0.5 - (abs(normal.r) + abs(normal.g)) * 8.0;
+    shoreOffset = clamp(mix(shoreOffset * 0.3, 1.0, clamp(linearDepth / WOBBLY_SHORE_FADE_DISTANCE, 0.0, 1.0)), 0.0, 1.0);
+    fresnel *= shoreOffset;
+#endif
+
     gl_FragData[0].rgb = mix(refraction, reflection, fresnel);
     gl_FragData[0].a = 1.0;
 #else
