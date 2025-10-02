@@ -23,7 +23,7 @@ void main()
     for (int i = 0; i < positionCount; ++i)
     {
         float wavesize = wavesizeMultiplier * positions[i].z;
-        float displace = clamp(mix(1.0, abs(length((positions[i].xy + offset - vec2(0.5)) - vec2(gl_GlobalInvocationID.xy))) / wavesize, 0.04), 0.0, 1.0);
+        float displace = clamp(mix(1.0, abs(length((positions[i].xy + offset - vec2(1.0)) - vec2(gl_GlobalInvocationID.xy))) / wavesize, 0.04), 0.0, 1.0);
         color.r = mix(1.0, color.r, displace);
     }
 
