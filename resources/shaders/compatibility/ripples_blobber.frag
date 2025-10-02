@@ -16,7 +16,7 @@ void main()
     vec2 uv = (gl_FragCoord.xy + offset) / @rippleMapSize;
 
     vec4 color = texture2D(imageIn, uv);
-    float wavesizeMultiplier = getTemporalWaveSizeMultiplier(osg_SimulationTime)
+    float wavesizeMultiplier = getTemporalWaveSizeMultiplier(osg_SimulationTime);
     for (int i = 0; i < positionCount; ++i)
     {
         float wavesize = wavesizeMultiplier * positions[i].z;
