@@ -20,8 +20,6 @@ This mod is made for OpenMW 0.49. As of 9/21/2025, it works with development bui
 
 This will likely conflict with other core shader mods. Combine them with caution.
 
-I haven't confirmed that this works on Mac. If you use this mod on a Mac, let me know how it works for you.
-
 ## Tweakables
 
 The main shader (found at resources/shaders/compatibility/water.frag) contains several tweakable values near the start of the file. The most important ones are listed below.
