@@ -24,7 +24,7 @@ const float WAVE_SCALE = 50.0;                       // overall wave scale
 
 const float BUMP = 4.0;                              // overall bumpiness
 const float REFL_BUMP = 0.5;                         // reflection distortion amount
-const float REFR_BUMP = 0.03;                        // refraction distortion amount
+const float REFR_BUMP = 0.05;                        // refraction distortion amount
 
 const vec2 DISTORT_SHARP = vec2(0.2, 0.2);           // distortion multiplier at sharp viewing angles
 
@@ -116,7 +116,7 @@ void main(void)
                + 2.0 * (texture2D(normalMap,normalCoords(UV, 0.32,  waterTimer, vec2( 0.055,  0.033), normal.xy)).rg - 0.5) * sampleMult * smallWaves.w;
 
     float distToCenter = length(rippleMapUV - vec2(0.5));
-    float blendClose = mix(0.2, 1.0, smoothstep(10, 70, radialDepth));
+    float blendClose = mix(0.0, 1.0, smoothstep(10, 60, radialDepth));
     float blendFar = 1.0 - smoothstep(0.3, 0.4, distToCenter);
     float distortionLevel = 3.5;
     vec2 actorRipple = distortionLevel * texture2D(rippleMap, rippleMapUV).ba * blendFar * blendClose;
