@@ -24,6 +24,11 @@ This will likely conflict with other core shader mods. Combine them with caution
 
 The main shader (found at resources/shaders/compatibility/water.frag) contains several tweakable values near the start of the file. The most important ones are listed below.
 
+### DISTORT_RAYMETHOD
+#### (Default: true)
+Determines how the distortion for reflection/refraction will be calculated. If true, a more realistic ray-based method will be used. If false, a method more similar to the vanilla shader will be used.
+
+
 These four values are carried over from Morrowind.ini:
 
 ### ENV_REDUCE_COLOR
